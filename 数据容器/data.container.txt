@@ -1,0 +1,338 @@
+数据容器：
+	可以存储多个元素的python数据类型
+有哪些数据容器：
+	list（列表）、tuple（元组）、str（字符串）、set（集合）、dict（字典）
+	
+	
+1.list 列表 
+	列表内每一个数据，称为元素
+	以[]作为标识
+	列表内每一个元素之间，用逗号隔开
+	（支持嵌套）
+	
+	##定义一个列表list
+	my_list = ["apple","123","True":]
+	print(my_list)
+	print(type(my_list))
+	
+	one_list = [["123","Tom","Jake"],["orange"]]    //嵌套
+	
+	##列表下标索引
+		正向索引：从前向后，编号从0开始递增
+		反向索引：从后向前，编号从-1开始递减
+		print(my_list[0])  //正向索引  apple
+		print(my_list[-3]  //反向索引  apple
+	
+		print(one_list[0][2])  //  嵌套的索引 Jake
+	
+	
+	##列表的常用操作（列表的方法：插入、删除、清空、修改、统计元素个数）
+	（1）查询
+		语法：列表.index(元素)
+		mylist = ["Jake","Marry","Bob"]
+		index = mylist.index("Jake")
+		print(f"Jake在列表中的下标是：{index}")
+	
+	（2）修改
+		语法：列表[下标] = 值
+		mylist[0] = "Mike"	
+	
+	(3)插入
+		语法：列表.insert(下标,元素),在指定的下标位置,插入指定的元素
+		mylist.insert(1,"like")
+	
+	(4)追加元素
+		语法：列表.append（元素），将指定元素，追加到列表的尾部
+	
+	(5)追加一批元素
+		语法：列表.extend（其他数据容器），将其他数据容器的内容取出，依次追加到列表尾部
+		mylist.extend(my_list)
+	
+	(6)删除元素
+		语法1：del 列表[下标]
+		mylist = ["Jake","Marry","Bob"]
+		del mylist[2]
+		语法2：列表.pop(下标)  //将元素取出
+		element = mylist.pop(2)
+	
+	(7)删除某元素在列表中的第一个匹配项
+		语法：列表.remove(元素)
+		my_list = [1,2,3,2,3]
+		my_list.remove(2)
+		print(my_list) //结果是[1，3，2，3]
+	
+	(8)清空列表内容
+		语法：列表.clear()
+	
+	(9)统计某元素在列表内的数量
+		语法：列表.count(元素)
+	
+	(10)统计列表内，有多少元素
+		语法：len(元素)
+		count = len(my_list)
+	特点
+	（1）可以容纳多个元素
+	（2）可以容纳不同类型的元素
+	（3）数据是有序存储的（下标序号）
+	（4）允许重复数据存在
+	（5）可以修改（增加，删除，插入等）
+	
+	##list列表的循环遍历
+	（1）while循环
+		def list_while_func():
+			my_list = ["Jake", "Petter", "Rose"]
+			# 循环控制遍历通过下标来控制，默认0；
+			# 每一次循环下标索引变量+1
+			# 循环条件：下标索引变量 < 列表的元素数量
+
+			index = 0
+			while index < len(my_list):
+			element = my_list[index]
+			print("列表的元素：{}".format(element))
+			index += 1
+	（2）for循环
+		def list_for_func():
+			my_list = ["apple","orange","banana","pear","grape" ]
+			for element in my_list:
+				print("列表中的元素有：{}".format(element))
+	
+	区别：
+	    （1）while循环可以自定义循环条件，并自行控制
+		（2）while循环可以通过条件控制做到无限循环
+		（3）for循环适用于遍历数据容器的场景或简单的固定次数循环场景
+	
+	练习2：
+	定义一个列表，内容是：[1,2,3,4,5,6,7,8,9,10]
+	遍历列表，取出列表内的偶数，并存入一个新的列表中
+	
+	
+2.tuple 元组
+	
+	定义：定义元组使用小括号，且使用逗号隔开各个数据，数据可以是不同的数据类型
+	其内容不能修改
+		变量名称 = ()
+		变量名称 = tuple()
+	t1 = (1,"hello","True")
+	t2 = ()
+	t3 = tuple()
+	#注意：元组只有一个数据，这个数据后面要添加逗号
+	t4 = ("Hello",)
+	##元组的嵌套
+	t5 = ((1,2,3),(4,5,6))
+	
+	##下标索引取出内容
+		t5[1][2] //取出了数据6
+		
+	元组的操作：查找index，统计元素出现次数count，统计元组内元素个数len
+	(1)index
+		t6 = ("Jake","Marry","Bob")
+		index = t6.index("Marry")
+	(2)count
+	t7 = (1,3,4,5,2,8,2,1,3,2)
+		num = t7.count(2)
+	(3)len
+		num = len(t7)
+		
+	##元组的遍历
+	（1）while
+		index = 0
+		while index < len(t7):
+			print(t7[index],end = " ")
+			index += 1
+			
+	(2)for
+		for element in t7:
+			print(t7[index],end = " ")
+			
+	##注意事项
+	修改元组：在元组里面定义了一个list
+	t8 = ("apple","orange",[1,2,3])
+	print(t8)
+	t8[-1][2] = "Jake"
+	print(t8)
+	
+	特点：
+	（1）可以容纳多个数据
+	（2）可以容纳不同类型的数据
+	（3）数据是有序存储
+	（4）允许重复数据存在
+	（5）不可以修改（增加或删除元素等）
+	（6）支持for循环
+	
+	练习：定义一个元组，内容是('name',11,["football","music"]),记录一个学生的信息（姓名，年龄，爱好）
+	对其进行查询年龄下标位置，学生姓名，删除学生爱好中的football，增加爱好coding到list中
+	
+3.str 字符串
+	字符串是字符的容器，一个字符串可以存放任意数量的字符
+	它也是一个不可修改的数据容器
+	可以通过下标进行访问
+	name = "alxzander"
+	print(name[0])
+	
+	index使用与list,tuple一样
+	
+	##字符串的替换
+	语法：字符串.replace(字符串1，字符串2)
+	功能：讲字符串内的全部：字符串1，替换成字符串2
+	注意：不是修改字符串本身，而是得到了一个新的字符串
+	my_str = "hello world and happy everyday"
+	new_my_str = my_str.replace("hello","hi")
+	print(my_str,"  ",new_my_str)
+
+	##字符串的分割
+	语法：字符串.split(分割符字符串)
+	功能：按照指定的分隔符字符串，讲字符串划分为多个字符串，并存入列表对象中
+	注意：字符串本身不变，而是得到了一个列表对象
+	my_str = "hello world and happy everyday"
+	my_str_list = my_str.split(" ")
+	
+	##字符串的规整操作
+	（1）去前后空格
+		字符串.strip()
+	（2）去前后指定字符串
+		字符串.strip(字符串)
+	my_str = "  hello world and happy everyday  "
+	my_str.strip()
+	my_str = "31hello world and happy everyday13"
+	my_str.strip("13")
+	
+	##统计字符串中某字符串出现的次数->count
+	my_str = "hello world and hello my friend"
+	count = my_str.count("hello")
+	
+	##统计字符串的长度
+	num = len(my_str)
+	
+	##字符串的遍历
+	
+#######数据容器（序列）的切片############
+	内容连续、有序、可以用下标索引的一类数据容器
+	列表、元组、字符串均可以视为序列
+	常用操作：切片->从一个序列中，取出一个子序列
+		语法：序列[起始下标:结束下标:步长]
+		起始下标和结束下标可以留空，结束下表不含本身
+		步长：依次取元素的间隔
+		步长取负数，代表从后往前
+		切片不会影响序列本身
+	
+4.set 集合
+	不支持重复的元素且无序（不支持下标索引访问）
+	##定义
+	my_set = {"apple","Jake","Marry","Bob","orange","banana"}
+	my_set_empty = set() //定义空集合
+	
+	##常用操作
+	（1）添加元素
+		集合.add(元素)
+	（2）移除元素
+		集合.remove(元素)
+	（3）从集合中随机取出一个元素
+		集合.pop()
+	（4）清空
+		集合.clear()
+	（5）修改
+	
+		集合1.difference(集合2)
+		取出集合1和集合2的差集（集合1有而集合2没有的 ）->得到一个新集合，集合1和集合2不变
+		
+		删除2个集合的差集
+		集合1.difference_update(集合2)
+		功能：对比集合1和集合2，在集合1内，删除和集合2相同的元素
+		结果：集合1被修改，集合2不变
+	
+		2个集合合并
+		集合1.union(集合2)
+		功能：将集合1和集合2组合成新集合
+	
+		统计集合元素数量len()
+		set1 = {1,2,2,2,3,4,5} 
+		num = len(set1) //num = 5,不会包含重复的元素	
+
+		
+	##集合的遍历
+		不能用while循环（没有下标索引）
+	练习：定义一个空集合，for循环一个列表对象，在for循环中将咧白哦元素添加至集合
+	
+	
+5.dict 字典
+	可以通过key实现取出value的操作
+	my_dict = {key:value,key:value........}
+	定义空字典
+	my_dict = {}
+	my_dict = dict()
+	里面不能重复定义，后面的会把前面的覆盖掉
+	
+	##字典数据的获取
+	不能使用下标索引
+	
+	字典的嵌套
+		字典的key和value可以是任意数据类型（key不可为字典）
+		student_score_dict = {
+			"Jake":{
+				"语文":77,
+				"数学":66,
+				"英语":33,
+				}
+			},"Marry":{
+				"语文":78,
+				"数学":89,
+				"英语":99,
+		score = student_score_dict["Jake"]["语文"]
+	
+	##字典的常用操作
+	（1）新增元素
+		语法：字典[Key] = Value
+	（2）更新元素
+		语法：字典[Key] = Value
+	若key存在则是更新该key的value值，不存在则新增该key
+	（3）删除元素
+		语法：字典.pop(Key)
+		结果：获得指定key的value
+		stu_score = {"jake":66,"marry":98,"bob":65}
+		value = stu_score.pop("jake)
+		print(value)  //66
+	（4）清空
+		字典.clear()
+	（5）获取全部key
+		语法：字典.keys()
+		得到字典中全部key
+		stu_score = {"jake":66,"marry":98,"bob":65}
+		keys = stu_score.keys()
+		
+		##遍历字典
+		（1）通过获取到全部的key
+			for key in keys:
+				print(key)
+				print("字典中的value是：{}".format(stu_score(key)))
+		（2）直接对字典进行for循环
+			for key in stu_score
+				print(key)
+				print("字典2中的value是：{}".format(stu_score(key)))	
+	（6）总计字典内的元素数量，len()
+	
+	练习
+	
+	
+	
+数据容器的通用操作
+
+（1）遍历
+	都可以用for循环遍历
+	列表、元组、字符串支持while循环	
+（2）通用统计功能
+	len(容器)
+	max(容器)
+	min(容器)
+（3）通用转换功能
+	list()
+	tuple()
+	str()
+	set()
+	dict转成字符串value会保存，其他的会丢弃
+（4）通用排序
+	sorted(容器，[reverse=True])//[]里面的内容加上后，排序会反转
+	排序后都变成了列表
+	
+拓展：字符串大小比较
+ASC码表	
+	
