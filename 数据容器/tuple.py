@@ -1,0 +1,10 @@
+student = ("Jake",18,["football","music"])
+print(student)
+index1 = student.index(18)
+print(index1)
+index2 = student.index("Jake")
+print(index2)
+del student[-1][0]
+print(student)
+student[-1].append("coding")
+print(student)
